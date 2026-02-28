@@ -4,6 +4,7 @@ const app = document.getElementById('dashboard');
 const saveBtn = document.getElementById('save-settings-btn');
 let mainChart, detailChart;
 
+
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (document.getElementById('email').value === "admin@gmail.com" && 
@@ -15,15 +16,16 @@ loginForm.addEventListener('submit', (e) => {
     } else { alert("Hatalı giriş!"); }
 });
 
+
 function saveSettings() {
     const newName = document.getElementById('set-name').value;
     const newTheme = document.getElementById('set-theme').value;
 
     if(newName.trim()) {
         document.querySelector('.user-profile strong').innerText = newName;
-        localStorage.setItem('nazir_name', newName);
+        localStorage.setItem('admin_name', newName);
     }
-    localStorage.setItem('nazir_theme', newTheme);
+    localStorage.setItem('admin_theme', newTheme);
     applyTheme(newTheme);
     alert("Ayarlar güncellendi!");
 }
@@ -37,13 +39,14 @@ function applyTheme(theme) {
 }
 
 function loadSettings() {
-    const n = localStorage.getItem('nazir_name');
-    const t = localStorage.getItem('nazir_theme');
+    const n = localStorage.getItem('admin_name');
+    const t = localStorage.getItem('admin_theme');
     if(n) { document.querySelector('.user-profile strong').innerText = n; document.getElementById('set-name').value = n; }
     if(t) { document.getElementById('set-theme').value = t; applyTheme(t); }
 }
 
 if(saveBtn) saveBtn.addEventListener('click', saveSettings);
+
 
 document.querySelectorAll('#menu li[data-target]').forEach(item => {
     item.addEventListener('click', () => {
@@ -58,6 +61,7 @@ document.querySelectorAll('#menu li[data-target]').forEach(item => {
         if(target === 'page-stats') initDetailChart();
     });
 });
+
 
 function initDashboard() {
     if(mainChart) mainChart.destroy();
@@ -115,6 +119,5 @@ function animate(id, target) {
         el.innerText = cur.toLocaleString();
     }, 30);
 }
-
 
 document.getElementById('logout-btn').addEventListener('click', () => location.reload());

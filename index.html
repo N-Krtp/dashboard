@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NK | Yönetim Paneli</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-screen" class="login-overlay">
+        <div class="login-box">
+            <i class="fas fa-user-shield logo-main"></i>
+            <h2>Sistem Girişi</h2>
+            <form id="login-form">
+                <div class="input-group">
+                    <label>E-POSTA</label>
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" required placeholder="admin@gmail.com">
+                </div>
+                <div class="input-group">
+                    <label>ŞİFRE</label>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" required placeholder="123">
+                </div>
+                <button type="submit" class="login-btn">Giriş Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-container" id="dashboard" style="display: none;">
+        <aside class="sidebar">
+            <div class="logo"><i class="fas fa-terminal"></i> DASHBOARD</div>
+            <ul id="menu">
+                <li class="active" data-target="page-dashboard"><i class="fas fa-columns"></i> Dashboard</li>
+                <li data-target="page-stats"><i class="fas fa-chart-pie"></i> İstatistikler</li>
+                <li data-target="page-settings"><i class="fas fa-cog"></i> Ayarlar</li>
+                <li id="logout-btn" class="logout-li"><i class="fas fa-power-off"></i> Çıkış</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h2 id="page-title">Genel Bakış</h2>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <strong>Nazir Karatepe</strong>
+                    </div>
+                </div>
+            </header>
+
+            <div id="page-dashboard" class="page active">
+                <section class="stats-grid">
+                    <div class="card"><h3>Toplam Gelir</h3><p>$<span id="s1">0</span></p></div>
+                    <div class="card"><h3>Kullanıcılar</h3><p><span id="s2">0</span></p></div>
+                    <div class="card"><h3>Verimlilik</h3><p>%<span id="s3">0</span></p></div>
+                </section>
+                <div class="data-grid">
+                    <div class="box chart-box">
+                        <h3>Haftalık Akış</h3>
+                        <div class="canvas-wrapper"><canvas id="mainChart"></canvas></div>
+                    </div>
+                    <div class="box">
+                        <h3>Son Etkinlikler</h3>
+                        <table>
+                            <tr><td>Sunucu Bağlantısı</td><td><span class="status">Aktif</span></td></tr>
+                            <tr><td>Veri Senkronu</td><td><span class="status">Aktif</span></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-stats" class="page">
+                <div class="box">
+                    <h3>Detaylı Performans Analizi</h3>
+                    <div class="canvas-wrapper" style="height: 400px;">
+                        <canvas id="detailChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div id="page-settings" class="page">
+                <div class="box settings-container">
+                    <h3>Panel Ayarları</h3>
+                    <div class="settings-form">
+                        <div class="input-group">
+                            <label>Profil İsmi</label>
+                            <input type="text" id="set-name" placeholder="İsminizi girin">
+                        </div>
+                        <div class="input-group">
+                            <label>Görünüm Teması</label>
+                            <select id="set-theme">
+                                <option value="light">Aydınlık Mod</option>
+                                <option value="dark">Karanlık Mod</option>
+                            </select>
+                        </div>
+                        <button class="login-btn" id="save-settings-btn">Değişiklikleri Uygula</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

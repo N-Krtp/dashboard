@@ -4,7 +4,6 @@ const app = document.getElementById('dashboard');
 const saveBtn = document.getElementById('save-settings-btn');
 let mainChart, detailChart;
 
-// --- GİRİŞ ---
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (document.getElementById('email').value === "admin@gmail.com" && 
@@ -16,7 +15,6 @@ loginForm.addEventListener('submit', (e) => {
     } else { alert("Hatalı giriş!"); }
 });
 
-// --- AYARLAR VE HAFIZA ---
 function saveSettings() {
     const newName = document.getElementById('set-name').value;
     const newTheme = document.getElementById('set-theme').value;
@@ -33,7 +31,6 @@ function saveSettings() {
 function applyTheme(theme) {
     theme === 'dark' ? document.body.classList.add('dark') : document.body.classList.remove('dark');
     if(mainChart) {
-        // Grafiği tema rengine göre güncelle
         mainChart.options.scales.y.grid.color = theme === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)';
         mainChart.update();
     }
@@ -48,7 +45,6 @@ function loadSettings() {
 
 if(saveBtn) saveBtn.addEventListener('click', saveSettings);
 
-// --- SAYFA GEÇİŞLERİ ---
 document.querySelectorAll('#menu li[data-target]').forEach(item => {
     item.addEventListener('click', () => {
         const target = item.getAttribute('data-target');
@@ -63,7 +59,6 @@ document.querySelectorAll('#menu li[data-target]').forEach(item => {
     });
 });
 
-// --- GRAFİKLER ---
 function initDashboard() {
     if(mainChart) mainChart.destroy();
     const ctx = document.getElementById('mainChart').getContext('2d');
@@ -87,7 +82,6 @@ function initDashboard() {
             scales: {
                 y: {
                     beginAtZero: true,
-                    // SOLDAKİ SAYILARIN ÜST ÜSTE BİNMESİNİ ÖNLEYEN KOD:
                     ticks: { maxTicksLimit: 6, stepSize: 20 },
                     grid: { color: document.body.classList.contains('dark') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)' }
                 },
@@ -121,5 +115,6 @@ function animate(id, target) {
         el.innerText = cur.toLocaleString();
     }, 30);
 }
+
 
 document.getElementById('logout-btn').addEventListener('click', () => location.reload());

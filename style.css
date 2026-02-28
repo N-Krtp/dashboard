@@ -61,82 +61,24 @@ td { padding: 15px 0; border-top: 1px solid var(--border); }
 
 
 @media (max-width: 768px) {
-    .app-container {
-        flex-direction: column;
+    .app-container { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; padding: 10px 5px; }
+    .sidebar ul { display: flex; flex-direction: row; justify-content: center; gap: 5px; width: 100%; }
+    .sidebar li { flex: 1; padding: 12px 5px; font-size: 10px; flex-direction: column; align-items: center; justify-content: center; border-radius: 12px; }
+    .logo { display: none; }
+    .logout-li { margin-top: 0 !important; background-color: rgba(251, 113, 133, 0.1); }
+
+
+    .main-content { padding: 15px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    
+
+    .data-grid { 
+        display: flex; 
+        flex-direction: column; 
+        gap: 20px; 
     }
-
-    .sidebar {
-        width: 100%;
-        height: auto;
-        padding: 10px 5px;
-        background-color: var(--sidebar-bg);
-    }
-
-
-    .sidebar ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: stretch;
-        gap: 5px;
-        width: 100%;
-    }
-
-
-    .sidebar li {
-        flex: 1;
-        margin-bottom: 0 !important;
-        margin-top: 0 !important;
-        padding: 12px 5px;
-        font-size: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        border-radius: 12px;
-        min-width: 0;
-    }
-
-
-    .logout-li {
-        margin-top: 0 !important; 
-        background-color: rgba(251, 113, 133, 0.1);
-    }
-
-    .sidebar li i {
-        font-size: 18px;
-        margin-bottom: 5px;
-    }
-
-
-    .logo {
-        display: none; 
-    }
-
-
-    .main-content {
-        padding: 15px;
-    }
-
-    header {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-
-    .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-
-    .card {
-        padding: 20px 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
+    
+    .box { width: 100%; padding: 20px; }
+    .canvas-wrapper { height: 220px; }
 }
